@@ -4,7 +4,7 @@
   "description": "Browse and import battle maps from r/battlemaps and r/dndmaps directly into FoundryVTT scenes.",
   "version": "1.0.0",
   "compatibility": {
-    "minimum": "14",
+    "minimum": "13",
     "verified": "14"
   },
   "esmodules": [
