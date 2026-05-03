@@ -14,6 +14,6 @@
     "styles/module.css"
   ],
   "url": "https://github.com/aristsap/reddit-battlemaps-module",
-  "manifest": "https://github.com/aristsap/reddit-battlemaps-module/releases/latest/download/module.json",
-  "download": "https://github.com/aristsap/reddit-battlemaps-module/releases/latest/download/module.zip"
+  "manifest": "https://github.com/aristsap/reddit-battlemaps-module/releases/download/version1/module.json",
+  "download": "https://github.com/aristsap/reddit-battlemaps-module/releases/download/version1/reddit-battlemaps-module.zip"
 }
