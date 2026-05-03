@@ -1,0 +1,98 @@
+<div class="reddit-importer">
+
+  <div class="rbi-tabs">
+    <button class="rbi-tab {{#if (eq subreddit 'battlemaps')}}active{{/if}}" data-subreddit="battlemaps">
+      r/battlemaps
+    </button>
+    <button class="rbi-tab {{#if (eq subreddit 'dndmaps')}}active{{/if}}" data-subreddit="dndmaps">
+      r/dndmaps
+    </button>
+    <div class="rbi-search">
+      <input type="text" class="rbi-search-input" placeholder="Search maps…" value="{{searchQuery}}">
+      <button class="rbi-search-btn"><i class="fas fa-search"></i> Search</button>
+    </div>
+  </div>
+
+  <div class="rbi-grid-container">
+    {{#if loading}}
+      <div class="rbi-state-overlay">
+        <i class="fas fa-spinner fa-spin fa-2x"></i>
+        <span>Loading maps…</span>
+      </div>
+    {{else if error}}
+      <div class="rbi-state-overlay rbi-error">
+        <i class="fas fa-exclamation-triangle fa-2x"></i>
+        <span>{{error}}</span>
+        <button class="rbi-retry-btn">Retry</button>
+      </div>
+    {{else if (eq posts.length 0)}}
+      <div class="rbi-state-overlay">
+        <i class="fas fa-image fa-2x"></i>
+        <span>No maps found.</span>
+      </div>
+    {{else}}
+      <div class="rbi-grid">
+        {{#each posts}}
+        <div class="rbi-card"
+             data-post-id="{{id}}"
+             data-image-url="{{imageUrl}}"
+             data-thumbnail-url="{{thumbnailUrl}}"
+             data-preview-url="{{previewUrl}}"
+             data-title="{{title}}"
+             data-author="{{author}}"
+             data-score="{{score}}"
+             data-permalink="{{permalink}}">
+          <div class="rbi-card-thumb">
+            <img class="rbi-card-img" src="{{thumbnailUrl}}" loading="lazy" decoding="async" alt="">
+            <div class="rbi-card-overlay">
+              <button class="rbi-import-btn" title="Import to Foundry">
+                <i class="fas fa-file-import"></i> Import
+              </button>
+            </div>
+          </div>
+          <div class="rbi-card-info">
+            <div class="rbi-card-title" title="{{title}}">{{title}}</div>
+            <div class="rbi-card-meta">
+              <span><i class="fas fa-arrow-up"></i> {{score}}</span>
+              <span>u/{{author}}</span>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    {{/if}}
+  </div>
+
+  <div class="rbi-footer">
+    <span class="rbi-status">{{statusText}}</span>
+    {{#if hasMore}}
+      <button class="rbi-load-more-btn"><i class="fas fa-chevron-down"></i> Load More</button>
+    {{/if}}
+  </div>
+
+</div>
+
+<div class="rbi-lightbox" style="display:none">
+  <div class="rbi-lightbox-backdrop"></div>
+  <div class="rbi-lightbox-content">
+    <button class="rbi-lightbox-close" title="Close"><i class="fas fa-times"></i></button>
+    <div class="rbi-lightbox-img-wrap">
+      <img class="rbi-lightbox-img" src="" alt="">
+    </div>
+    <div class="rbi-lightbox-details">
+      <h3 class="rbi-lightbox-title"></h3>
+      <div class="rbi-lightbox-meta">
+        <span class="rbi-lightbox-score"></span>
+        <span class="rbi-lightbox-author"></span>
+      </div>
+      <div class="rbi-lightbox-actions">
+        <a class="rbi-lightbox-reddit-link" href="#" target="_blank" rel="noreferrer">
+          <i class="fas fa-external-link-alt"></i> View on Reddit
+        </a>
+        <button class="rbi-lightbox-import-btn">
+          <i class="fas fa-file-import"></i> Import to Foundry
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
